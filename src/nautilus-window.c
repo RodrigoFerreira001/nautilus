@@ -773,6 +773,17 @@ update_cursor (NautilusWindow *window)
 }
 
 void
+nautilus_window_hide_view_menu (NautilusWindow *window)
+{
+        GActionGroup *action_group;
+        GAction *menu_action;
+
+        action_group = gtk_widget_get_action_group (GTK_WIDGET (window), "win");
+        menu_action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "view-menu");
+        g_action_change_state (menu_action, g_variant_new_boolean (FALSE));
+}
+
+void
 nautilus_window_reset_menus (NautilusWindow *window)
 {
 	nautilus_window_sync_allow_stop (window, nautilus_window_get_active_slot (window));
