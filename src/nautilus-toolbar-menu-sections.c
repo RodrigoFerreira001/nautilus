@@ -21,11 +21,12 @@
 
 
 NautilusToolbarMenuSections *
-nautilus_toolbar_menu_sections_new (void)
+nautilus_toolbar_menu_sections_new (gboolean show_undo_redo_section)
 {
         NautilusToolbarMenuSections *sections;
 
         sections = g_new0 (NautilusToolbarMenuSections, 1);
+        sections->show_undo_redo_section = show_undo_redo_section;
 
         return sections;
 }
